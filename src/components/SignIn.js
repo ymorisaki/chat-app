@@ -1,22 +1,27 @@
-import React, {useState, useEffect} from 'react';
-import Button from '@material-ui/core/Button';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import TextField from '@material-ui/core/TextField';
-import Link from '@material-ui/core/Link';
-import Box from '@material-ui/core/Box';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
+import React, { useState, useEffect } from 'react'
+import Button from '@material-ui/core/Button'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import TextField from '@material-ui/core/TextField'
+import Link from '@material-ui/core/Link'
+import Box from '@material-ui/core/Box'
+import Typography from '@material-ui/core/Typography'
+import { makeStyles } from '@material-ui/core/styles'
+import Container from '@material-ui/core/Container'
 
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://github.com/ymorisaki/chat-app" target="_blank" rel="noopener">
+      <Link
+        color="inherit"
+        href="https://github.com/ymorisaki/chat-app"
+        target="_blank"
+        rel="noopener"
+      >
         ymorisaki
       </Link>
     </Typography>
-  );
+  )
 }
 
 const useStyles = makeStyles((theme) => ({
@@ -37,18 +42,18 @@ const useStyles = makeStyles((theme) => ({
   submit: {
     margin: theme.spacing(3, 0, 2),
   },
-}));
+}))
 
-export default function SignIn({setName}) {
-  const classes = useStyles();
-  const [disabled, setDisabled] = useState(true);
-  const [string, setString] = useState('');
-  console.log(string);
+export default function SignIn({ setName }) {
+  const classes = useStyles()
+  const [disabled, setDisabled] = useState(true)
+  const [string, setString] = useState('')
+  console.log(string)
 
   useEffect(() => {
-    const disable = string === '';
-    setDisabled(disable);
-  }, [string]);
+    const disable = string === ''
+    setDisabled(disable)
+  }, [string])
 
   return (
     <Container component="main" maxWidth="xs">
@@ -57,7 +62,10 @@ export default function SignIn({setName}) {
         <Typography component="h1" variant="h5">
           ようこそ
         </Typography>
-        <form className={classes.form} noValidate onSubmit={(e) => e.preventDefault()}>
+        <form
+          className={classes.form}
+          noValidate
+        >
           <TextField
             variant="outlined"
             margin="normal"
@@ -68,6 +76,12 @@ export default function SignIn({setName}) {
             name="name"
             autoFocus
             onChange={(e) => setString(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                setName(e.target.value);
+                e.preventDefault();
+              }
+            }}
           />
           <Button
             type="button"
@@ -77,7 +91,7 @@ export default function SignIn({setName}) {
             className={classes.submit}
             disabled={disabled}
             onClick={() => {
-              setName(string);
+              setName(string)
             }}
           >
             はじめる
@@ -88,5 +102,5 @@ export default function SignIn({setName}) {
         <Copyright />
       </Box>
     </Container>
-  );
+  )
 }
