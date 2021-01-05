@@ -48,6 +48,7 @@ export default function SignIn({ setName }) {
   const classes = useStyles()
   const [disabled, setDisabled] = useState(true)
   const [string, setString] = useState('')
+  const [isComposed, setIsComposed] = useState(false)
   console.log(string)
 
   useEffect(() => {
@@ -62,10 +63,7 @@ export default function SignIn({ setName }) {
         <Typography component="h1" variant="h5">
           ようこそ
         </Typography>
-        <form
-          className={classes.form}
-          noValidate
-        >
+        <form className={classes.form} noValidate>
           <TextField
             variant="outlined"
             margin="normal"
@@ -78,9 +76,19 @@ export default function SignIn({ setName }) {
             onChange={(e) => setString(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === 'Enter') {
-                setName(e.target.value);
-                e.preventDefault();
+                if (!isComposed) {
+                  setName(e.target.value)
+                }
+                e.preventDefault()
               }
+            }}
+            onCompositionStart={() => {
+              console.log('日本語')
+              setIsComposed(true)
+            }}
+            onCompositionEnd={() => {
+              setIsComposed(false)
+              console.log('日本語')
             }}
           />
           <Button
