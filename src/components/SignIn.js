@@ -57,7 +57,7 @@ export default function SignIn({setName}) {
         <Typography component="h1" variant="h5">
           ようこそ
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} noValidate onSubmit={(e) => e.preventDefault()}>
           <TextField
             variant="outlined"
             margin="normal"
@@ -70,12 +70,15 @@ export default function SignIn({setName}) {
             onChange={(e) => setString(e.target.value)}
           />
           <Button
-            type="submit"
+            type="button"
             fullWidth
             variant="contained"
             color="primary"
             className={classes.submit}
             disabled={disabled}
+            onClick={() => {
+              setName(string);
+            }}
           >
             はじめる
           </Button>
