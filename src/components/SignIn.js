@@ -83,12 +83,10 @@ export default function SignIn({ setName }) {
               }
             }}
             onCompositionStart={() => {
-              console.log('日本語')
               setIsComposed(true)
             }}
             onCompositionEnd={() => {
               setIsComposed(false)
-              console.log('日本語')
             }}
           />
           <Button
