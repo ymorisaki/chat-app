@@ -23,6 +23,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
+  "type": "module",
   "browserslist": {
     "production": [
       ">0.2%",
@@ -36,7 +37,7 @@
     ]
   },
   "devDependencies": {
-    "eslint": "^7.17.0",
-    "eslint-plugin-react": "^7.22.0"
+    "eslint-plugin-react": "^7.22.0",
+    "firebase": "^7.23.0"
   }
 }
