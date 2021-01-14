@@ -5,7 +5,6 @@ import config from '../config.json'
 
 export default () => {
   const [name, setName] = useState('')
-  console.log(name)
 
   if (name === '' && config.signInEnaled) {
     return <SignIn setName={setName} />
