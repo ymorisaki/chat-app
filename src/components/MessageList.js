@@ -9,6 +9,7 @@ console.log(MessageItem)
 
 const useStyles = makeStyles({
   root: {
+    overflow: 'auto',
     gridRow: 1,
   },
 });
@@ -34,13 +35,14 @@ const MessageList = () => {
       });
   }, []);
 
-  console.log(messages)
+  const length = messages.length;
 
   return (
   <List className={classes.root}>
     {
-      messages.map(({key, name, text}) => {
-        return <MessageItem key={key} name={name} text={text}>item</MessageItem>
+      messages.map(({key, name, text}, index) => {
+        const isLastItem = length === index + 1;
+        return <MessageItem key={key} name={name} text={text} isLastItem={isLastItem} />
       })
     }
   </List>
